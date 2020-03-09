@@ -1,6 +1,8 @@
 package Service;
 
+import Entity.ExpressionEntity;
 import Exception.InvalidExpressionException;
+
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -8,10 +10,10 @@ import java.util.regex.Pattern;
 
 public class ValidationService {
 
-    private ConsoleService consoleService = new ConsoleService();
+//    private ExpressionEntity expressionEntity = new ExpressionEntity();
     private ParsingService parsingService = new ParsingService();
 
-    private String arithmeticExpression = consoleService.consoleReceivingArithmeticExpression();
+//    private String arithmeticExpression = expressionEntity.getArithmeticExpressionFromConsole();
 
     private void checkForEmptyField(String theResultingExpression) {
         if (theResultingExpression.trim().equals("")) {
@@ -85,7 +87,7 @@ public class ValidationService {
         return operationSign;
     }
 
-    public String checkingOnValidArithmeticExpression() {
+    public String checkingOnValidArithmeticExpression(String arithmeticExpression) {
         checkForEmptyField(arithmeticExpression);
         checkForNegativeNumber(arithmeticExpression);
         zeroCheck(arithmeticExpression);
@@ -97,7 +99,7 @@ public class ValidationService {
         return arithmeticExpression;
     }
 
-    public List<CharSequence> arithmeticSignCheck() {
+    public List<CharSequence> arithmeticSignCheck(String arithmeticExpression) {
         return arithmeticSignCheck(parsingService.parsingOperationSign(arithmeticExpression));
     }
 }

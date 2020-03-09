@@ -4,17 +4,23 @@ import java.util.Scanner;
 
 import static java.lang.System.out;
 
-class ConsoleService {
+public class ConsoleService {
 
-    String consoleReceivingArithmeticExpression() {
+    private String arithmeticExpressionFromConsole = consoleReceivingArithmeticExpression();
+
+     String consoleReceivingArithmeticExpression() {
         out.print("Arithmetic Expression: ");
         Scanner scanner = new Scanner(System.in);
 
-        String arithmeticExpression = scanner.nextLine();
+        arithmeticExpressionFromConsole = scanner.nextLine();
 
-        scanner.close();
+         scanner.close();
 
-        return arithmeticExpression;
+         return arithmeticExpressionFromConsole;
+    }
+
+    public String getArithmeticExpressionFromConsole() {
+         return arithmeticExpressionFromConsole;
     }
 
 }

@@ -7,12 +7,14 @@ import java.util.regex.Pattern;
 
 public class ParsingService {
 
+    Pattern patternOperand = Pattern.compile("\\d+\\.?\\d?");
+    Pattern patternSign = Pattern.compile("[\\-+/*]");
+
     public List<Double> parsingOperand(String arithmeticExpression) {
 
         List<Double> listOperand = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile("\\d+\\.?\\d?");
-        Matcher matcher = pattern.matcher(arithmeticExpression);
+        Matcher matcher = patternOperand.matcher(arithmeticExpression);
 
         while (matcher.find()) {
             listOperand.add(Double.valueOf(matcher.group()));
@@ -25,8 +27,7 @@ public class ParsingService {
 
         List<CharSequence> listSign = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile("[\\-+/*]");
-        Matcher matcher = pattern.matcher(arithmeticExpression);
+        Matcher matcher = patternSign.matcher(arithmeticExpression);
 
         while (matcher.find()) {
             listSign.add(matcher.group());
